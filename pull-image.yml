@@ -1,0 +1,13 @@
+---
+- hosts:  all
+  become: yes
+
+  tasks:
+    - name: pull image from repo
+      docker_container:
+        immage: nginx:stable
+        name: nginx
+        state:  started
+        auto_remove:  true
+        ports:  
+          - "8080:80"
